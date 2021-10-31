@@ -1,0 +1,42 @@
+.titleBlock{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border: 2px solid #fff;
+    border-radius: 5px 5px 5px 5px;
+    padding: 6px;
+    height: 26px;
+    position: relative;
+}
+
+.title{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 2;
+    color: var(--grey);
+}
+
+.svg{
+    width: 20px;
+    height: 20px;
+    margin-left: -80px;
+}
+
+.circle{
+    fill: var(--electric-blue); 
+}
+
+.text{
+    text-anchor: middle;
+    fill: #fff;
+    font-size: 12px;
+}
+
+.arrow{
+    height:18px;
+    color: var(--electric-blue);
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 2px;
+}

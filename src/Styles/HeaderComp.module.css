@@ -1,0 +1,14 @@
+.header{
+    width: 100vw;
+    height: 65px;
+    background-color: #BDD1EA;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 1px 1px 2px #939393;
+}
+
+.h1{
+    font-family: 'Ruda', sans-serif;
+    padding-left: 20px;
+}

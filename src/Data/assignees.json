@@ -1,0 +1,34 @@
+{
+    "assignees":[
+        {
+            "id": "d671e9ea-14b6-41d3-835a-d8e4117a4c58",
+            "firstName": "John",
+            "lastName": "Smith"
+        },
+        {
+            "id": "4147d238-d959-493b-8aa2-ff5450001262",
+            "firstName": "Jane",
+            "lastName": "Doe"
+        },
+        {
+            "id": "392fdb6d-328d-405c-a42c-3eb7122afc3b",
+            "firstName": "Johny",
+            "lastName": "Stark"
+        },
+        {
+            "id": "ea197681-3c82-4211-9c52-caf5e06dfdbb",
+            "firstName": "Mark",
+            "lastName": "Johnson"
+        },
+        {
+            "id": "7165365f-62b2-4e61-8f5a-89477f687a29",
+            "firstName": "Allan",
+            "lastName": "Davis"
+        },
+        {
+            "id": "572130dc-5723-42ef-ba9d-3dc4895bd119",
+            "firstName": "Diana",
+            "lastName": "Roza"
+        }
+    ]
+}

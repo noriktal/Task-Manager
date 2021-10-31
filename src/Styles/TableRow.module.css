@@ -1,0 +1,32 @@
+.tr{
+    border-bottom: 0.5px solid #C7C7C7;
+    width: inherit;
+    
+}
+
+.td{
+    height: 60px;
+    
+}
+
+.tdTitle{
+padding-left: 50px;
+font-weight: 700;
+width: 35%;
+position: relative;
+}
+
+.tdTitle span{
+margin-top: -10px;
+}
+
+.tdAssignees{
+    width: 30%;
+}
+
+.tdStatus,.tdDuedate{
+    width: 17.5%;
+}
+
+
+

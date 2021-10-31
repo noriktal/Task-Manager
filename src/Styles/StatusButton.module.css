@@ -1,0 +1,13 @@
+
+.statusDiv{
+    position: relative;
+    width: 100px;
+}
+
+.statusDiv > :first-child:hover {
+   
+    cursor: pointer;
+    filter: contrast(130%);
+}
+
+
