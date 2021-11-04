@@ -10,6 +10,8 @@ const initStatuses = {statuses: [], chosenStatuses: []};
 
 const initSearchTerm = "";
 
+const initClickedTaskID = "";
+
 
 //Reducers
 
@@ -61,12 +63,24 @@ export const searchTermReducer = (state = initSearchTerm, action) => {
             return state;
     }
 }
+
+export const clickedTaskReducer = (state = initClickedTaskID, action) =>{
+    switch(action.type){
+        case "CHANGE_CLICKED_TASK":
+            return action.taskID;
+        default:
+            return state;
+    }
+}
+
+
 //Combined Reducer
 
 export const rootReducer = combineReducers({
     tasks: tasksReducer,
     assigneesContainer: assigneesReducer,
     statusesContainer: statusesReducer,
-    searchTerm: searchTermReducer
+    searchTerm: searchTermReducer,
+    clickedTask: clickedTaskReducer
     });
 

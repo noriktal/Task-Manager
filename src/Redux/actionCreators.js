@@ -60,3 +60,13 @@ export const changeSearchTerm = (searchTerm) => {
     }
         
 }
+
+//5. For clicked task reducer 
+export const changeClickedTask = (taskID) => {
+
+    return{
+        type: "CHANGE_CLICKED_TASK",
+        taskID: taskID
+    }
+        
+}

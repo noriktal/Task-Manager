@@ -1,5 +1,6 @@
 import { rootReducer, tasksReducer, assigneesReducer, statusesReducer, searchTermReducer } from "./ReducersCopyWithTree";
 import { createSelector } from "reselect";
+import { findDOMNode } from "react-dom";
 
 //Selectors
 
@@ -12,6 +13,10 @@ export const selectStatuses = state => state.statusesContainer.statuses;
 export const selectChosenStatuses = state => state.statusesContainer.chosenStatuses;
 
 export const selectSearchTerm = state => state.searchTerm;
+
+export const selectClickedTask = state => state.clickedTask;
+
+
 
 export const selectChosenAssigneesIDs = createSelector(
     [selectChosenAssignees],
@@ -108,6 +113,7 @@ export const selectAssigneesByTask = createSelector(
         
     });
 
+
     //II. Sorting the tasks according to tree structure
 
     export const selectSortedTasks = createSelector(
@@ -164,3 +170,57 @@ export const selectAssigneesByTask = createSelector(
                const sortedFilteredTasks = allTasks.filter(task => filteredIDs.includes(task.id))
                return sortedFilteredTasks;
             })
+
+            //Creating an array of offsprings' IDs (for tasks show/hide behavior in table)
+        export const selectOffsprings = createSelector(
+            [selectTasksTree, selectClickedTask], 
+            (root, clickedTaskID) => {
+                
+                function findNode(){
+
+                    if(clickedTaskID === "") return null;
+                    const stack = [];
+                    stack.push(root);
+
+                        while (stack.length > 0) {
+                            let node = stack.pop();
+                            if (node.ownID == clickedTaskID){
+                                // Found it!
+                                return node;
+                            }else if(node.children){
+                                for (let i = 0; i < node.children.length; i++) {
+                                    stack.push(node.children[i]);
+                                }
+                            }
+                        }
+                        // Didn't find it. Return null.
+                        return null;
+                }
+
+                const wantedNode = findNode();
+
+                function findAllOffsprings(node){
+                    if(!node){
+                        return [];
+                    } 
+                    let predArr = [];
+                    let stack = [];
+                    stack.push(node);
+                    
+                    while(stack.length > 0){
+                        let current = stack.pop();
+                        if(current.children){
+                            current.children.forEach(child => {
+                                predArr.push(child.ownID);
+                                stack.push(child);
+                            });
+                        }
+                    }
+                    
+                    return predArr;
+                    }
+                    
+                    const offSpringsIDs = findAllOffsprings(wantedNode);
+                    return offSpringsIDs;
+            })
+            

@@ -1,12 +1,16 @@
 import styles from "../Styles/TableRow.module.css";
-import { useSelector } from "react-redux";
-import { selectAssigneesByTask } from "../Redux/selectors";
+import { useSelector, useDispatch } from "react-redux";
+import { selectAssigneesByTask, selectClickedTask } from "../Redux/selectors";
 import StatusButton from "./StatusButton";
+import { changeClickedTask } from "../Redux/actionCreators";
 
 
-const TableRow = ({task, i, setRowID, rowID}) => {
+const TableRow = ({task, i}) => {
 
     const taskAssignees = useSelector(selectAssigneesByTask);
+    const clickedTaskID = useSelector(selectClickedTask);
+    const dispatch = useDispatch();
+
     
 
     let date = new Date(task.data.dueData);
@@ -14,11 +18,13 @@ const TableRow = ({task, i, setRowID, rowID}) => {
     let formattedDate2 = formattedDate1.substring(0,6) + "," + formattedDate1.substring(6);
 
     const handleChildren = () => {
-        rowID !== task.id ?  setRowID(task.id)
-                          :  setRowID("");
+        if(task.id === clickedTaskID){
+            dispatch(changeClickedTask(""));
+        }else{
+            dispatch(changeClickedTask(task.id));
+        }
     }
    
-
     return(
         <>
            
@@ -29,7 +35,7 @@ const TableRow = ({task, i, setRowID, rowID}) => {
                             {task.hasChildren ? 
                                 <ion-icon 
                                     name="chevron-forward-outline" 
-                                    style={(task.pid && task.id === rowID) ? 
+                                    style={(task.pid && task.id === clickedTaskID) ? 
                                         {paddingLeft: 20, color:`var(--electric-blue)`,fontSize: 18, paddingRight: 6, verticalAlign: "-20%"} :
                                         {color:`var(--electric-blue)`,fontSize: 18, paddingRight: 6, verticalAlign: "-20%", transform: `rotate(90deg)`}}
                                     onClick={handleChildren}
