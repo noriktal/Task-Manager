@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 - I did't use ready-made UI components of external libraries. 
 
-- I am aware of the fact that my solution for the collapsing behavior of table rows is not ideal. Note to myself: learn better ways to traverse node trees.
+- I am aware of the fact that my solution for the collapsing behavior of table rows is not ideal. Now walking the tree is done correctly, styling still isn't perfect.
 
 
 
